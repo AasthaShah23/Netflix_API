@@ -27,17 +27,17 @@ Follow the steps below to set up the project locally.
 
 
 ### change directory and install node modules
+cd netflix-backend  
 <br>
-cd netflix-backend
 npm install
 
 ### Create .env file in root directory
-<br>
 touch .env
 
 add below lines to .env file
 <br>
 MONGODB_URL=<Your MongoDB Connection String>
+<br>
 PORT=3001
 
 ## Run application
