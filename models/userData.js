@@ -15,7 +15,9 @@ const userSchema = new mongoose.Schema({
     type: String, 
     required: true 
   },
-  loggedOut: { type: Boolean, default: false }
+  loggedOut: { type: Boolean, default: false },
+  resetPasswordToken: String,
+  resetPasswordExpire: Date
 });
 
 // Hash the password before saving the user
