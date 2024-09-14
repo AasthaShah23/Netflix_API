@@ -7,6 +7,7 @@ const authLogin = require('./routes/authLogin');
 const authLogout = require('./routes/authLogout');
 const authDelete = require('./routes/authDelete');
 const forgotpassword = require('./routes/forgotPassword');
+const resetpassword = require('./routes/resetPassword');
 const cors = require('cors');
 
 const app = express();
@@ -33,6 +34,7 @@ app.use('/api', authLogin);
 app.use('/api', authLogout);
 app.use('/api', authDelete);
 app.use('/api', forgotpassword);
+app.use('/api', resetpassword);
 
 // Start server
 const PORT = process.env.PORT || 3001;

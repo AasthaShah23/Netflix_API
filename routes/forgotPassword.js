@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 // Required Modules
 const express = require('express');
 const User = require('../models/userData');  // Assuming you have a User model
@@ -13,6 +15,7 @@ router.post('/forgot-password', async (req, res) => {
     try {
         // Check if the email exists in the database
         const user = await User.findOne({ email });
+        console.log("user", user);
         if (!user) {
             return res.status(400).json({ message: 'User with this email does not exist' });
         }
@@ -20,6 +23,9 @@ router.post('/forgot-password', async (req, res) => {
         // Generate a reset token and expiration time (1 hour validity)
         const resetToken = crypto.randomBytes(32).toString('hex');
         const resetTokenExpire = Date.now() + 3600000;  // 1 hour from now
+
+
+        console.log("date.... ", Date.now());
 
         console.log("reset token", resetToken);
         console.log("reset Token Expire", resetTokenExpire);
@@ -33,8 +39,8 @@ router.post('/forgot-password', async (req, res) => {
         const transporter = nodemailer.createTransport({ 
             host: "smtp.gmail.com", // true for port 465, false for other ports
             auth: {
-                user: 'your-email@gmail.com',
-                pass: 'app password'
+                user: process.env.EMAIL,
+                pass: process.env.APP_PASSWORD
             },
         });
 
